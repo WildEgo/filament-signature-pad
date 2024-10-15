@@ -12,7 +12,6 @@
     $suffixIcon = $getSuffixIcon();
     $suffixLabel = $getSuffixLabel();
     $statePath = $getStatePath();
-    $displayTemplate = $getDisplayTemplate();
 @endphp
 <x-dynamic-component
     :component="$getFieldWrapperView()"
@@ -36,30 +35,26 @@
             backgroundColor: '{{$getBackgroundColor()}}',
             id: '{{ $id }}',
         })"
-        class="bg-white rounded-md"
     >
-        @if($displayTemplate)
-            <template x-if="state">
-                <img class="border mx-auto dark:border-gray-700 rounded-lg w-full max-w-[800px]" alt="current_signature" :src="state">
-            </template>
-        @endif
         @if(!($isReadOnly() || $isDisabled))
-            <canvas
-                before="Hello World"
-                {{ \Filament\Support\prepare_inherited_attributes($getExtraInputAttributeBag())
-                    ->merge($extraAlpineAttributes, escape: false)
-                    ->merge([
-                        'disabled' => $isDisabled,
-                        'id' => $id,
-                        'x-ref' => 'canvas',
-                        'x-model' => 'state',
-                        'placeholder' => $getPlaceholder(),
-                        'readonly' => $isReadOnly(),
-                        'required' => $isRequired() && (! $isConcealed),
-                    ], escape: false) }}
-                style="max-height: 100px !important; max-width: 800px !important; border-style: dashed; border-width: initial"
-                class="w-full h-full mx-auto border-dashed rounded-md before:content-[attr(before)]">
-            </canvas>
+            <div class="bg-white rounded-md">
+                <canvas
+                    before="Hello World"
+                    {{ \Filament\Support\prepare_inherited_attributes($getExtraInputAttributeBag())
+                        ->merge($extraAlpineAttributes, escape: false)
+                        ->merge([
+                            'disabled' => $isDisabled,
+                            'id' => $id,
+                            'x-ref' => 'canvas',
+                            'x-model' => 'state',
+                            'placeholder' => $getPlaceholder(),
+                            'readonly' => $isReadOnly(),
+                            'required' => $isRequired() && (! $isConcealed),
+                        ], escape: false) }}
+                    style="max-height: 100px !important; max-width: 800px !important; border-style: dashed; border-width: initial"
+                    class="w-full h-full mx-auto border-dashed rounded-md before:content-[attr(before)]">
+                </canvas>
+            </div>
             <div class="flex mt-2 justify-center space-x-2">
                 <x-filament::button icon="heroicon-o-arrow-path" color="danger" outlined="true" size="sm" @click.prevent="resizeCanvas()">
                 </x-filament::button>

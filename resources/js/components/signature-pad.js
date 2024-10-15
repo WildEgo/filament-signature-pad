@@ -21,11 +21,11 @@ export default function signaturePad(state, args) {
             }
 
             this.signaturePad = new SignaturePad(this.canvas, {
-                dotSize: this.dotSize               || 2,
-                minWidth: this.minWidth             || 1,
-                maxWidth: this.maxWidth             || 2.5,
-                minDistance: this.minDistance       || 2,
-                penColor: this.penColor             || 'rgb(0,0,0)',
+                dotSize: this.dotSize || 2,
+                minWidth: this.minWidth || 1,
+                maxWidth: this.maxWidth || 2.5,
+                minDistance: this.minDistance || 2,
+                penColor: this.penColor || 'rgb(0,0,0)',
                 backgroundColor: this.backgroundColor || 'rgba(255,255,255,0)'
             });
             /*if (this.state && this.state.includes('data:image')) {
@@ -38,16 +38,16 @@ export default function signaturePad(state, args) {
 
             this.signaturePad.addEventListener("beginStroke", () => {
                 // console.log("Signature started");
-            }, {once: false});
+            }, { once: false });
             this.signaturePad.addEventListener("endStroke", (e) => {
                 // console.log("End stroke")
                 this.save();
                 this.resizeCanvas()
-            }, {once: false});
+            }, { once: false });
 
             this.signaturePad.addEventListener("afterUpdateStroke", () => {
                 // console.log("Signature updated");
-            }, {once: false});
+            }, { once: false });
         },
         save() {
             this.state = this.signaturePad.toDataURL('image/svg+xml');
@@ -72,15 +72,13 @@ export default function signaturePad(state, args) {
             canva.width = dimensions.width * this.ratio;
             canva.height = dimensions.height * this.ratio;
             canva.getContext('2d').scale(this.ratio, this.ratio);
-            // this.signaturePad.clear();
             if (this.state) {
                 this.signaturePad.fromDataURL(this.state)
             } else {
                 this.signaturePad?.fromData(this.signaturePad.toData());
             }
         },
-        getCanvasOffsetDimensions()
-        {
+        getCanvasOffsetDimensions() {
             const canva = this.canvas;
             const element = canva.cloneNode(true);
             if (canva.offsetHeight > 0 && canva.offsetWidth > 0) {
@@ -148,7 +146,7 @@ export default function signaturePad(state, args) {
                 uInt8Array[i] = raw.charCodeAt(i);
             }
 
-            return new Blob([uInt8Array], {type: contentType});
+            return new Blob([uInt8Array], { type: contentType });
         }
     }
 }
