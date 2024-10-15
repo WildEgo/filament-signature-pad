@@ -36,7 +36,8 @@
             backgroundColor: '{{$getBackgroundColor()}}',
             id: '{{ $id }}',
         })"
-        class="p-2 md:p-4 bg-white dark:bg-gray-500 sm:rounded-md">
+        class="bg-white rounded-md"
+    >
         @if($displayTemplate)
             <template x-if="state">
                 <img class="border mx-auto dark:border-gray-700 rounded-lg w-full max-w-[800px]" alt="current_signature" :src="state">
@@ -57,7 +58,7 @@
                         'required' => $isRequired() && (! $isConcealed),
                     ], escape: false) }}
                 style="max-height: 100px !important; max-width: 800px !important; border-style: dashed; border-width: initial"
-                class="w-full h-full m-2 mx-auto border-dashed rounded-md dark:border-gray-700 before:content-[attr(before)]">
+                class="w-full h-full mx-auto border-dashed rounded-md before:content-[attr(before)]">
             </canvas>
             <div class="flex mt-2 justify-center space-x-2">
                 <x-filament::button icon="heroicon-o-arrow-path" color="danger" outlined="true" size="sm" @click.prevent="resizeCanvas()">
