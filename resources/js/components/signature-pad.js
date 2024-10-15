@@ -72,7 +72,7 @@ export default function signaturePad(state, args) {
             canva.width = dimensions.width * this.ratio;
             canva.height = dimensions.height * this.ratio;
             canva.getContext('2d').scale(this.ratio, this.ratio);
-            this.signaturePad.clear();
+            // this.signaturePad.clear();
             if (this.state) {
                 this.signaturePad.fromDataURL(this.state)
             } else {
