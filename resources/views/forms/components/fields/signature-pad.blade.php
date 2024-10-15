@@ -37,7 +37,7 @@
         })"
     >
         @if(!($isReadOnly() || $isDisabled))
-            <div class="bg-white rounded-md">
+            <div class="bg-white rounded-md p-2">
                 <canvas
                     before="Hello World"
                     {{ \Filament\Support\prepare_inherited_attributes($getExtraInputAttributeBag())
